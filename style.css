@@ -1,0 +1,100 @@
+
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+    body { font-family: 'Inter', sans-serif; }
+    
+    /* Animaciones suaves */
+    .fade-in { animation: fadeIn 0.5s ease-in-out; }
+    @keyframes fadeIn { 
+        from { opacity: 0; transform: translateY(10px); } 
+        to { opacity: 1; transform: translateY(0); } 
+    }
+    
+    /* ⭐ Sidebar más ordenado */
+    .sidebar-link { 
+        margin-bottom: 6px; /* separación extra entre botones */
+    }
+
+    /* ⭐ Separación vertical entre normalidad–autocorrelación–homocedasticidad */
+    .stat-card {
+        padding: 10px;            /* NO MODIFICADO */
+        margin-top: 6px !important;
+    }
+
+    /* ⭐ Subir un poco los títulos de los gráficos */
+    .chart-title {
+        position: absolute;
+        top: -20px;
+        left: -50px;
+        font-weight: bold;
+        font-size: 0.9rem;
+        color: #475569;
+        margin-left: 100px;
+    }
+    .page-break-print {
+        page-break-before: always !important;
+        break-before: always !important;
+    }
+    /* ======================================
+       ⭐ ESTILOS PARA IMPRESIÓN (NEW)
+       Para que se impriman TODOS los gráficos,
+       TODAS las tablas y todo sin cortes.
+       ====================================== */
+    @media print {
+
+        /* Fondo blanco y todo visible */
+        body, html {
+            height: auto !important;
+            overflow: visible !important;
+            background: white !important;
+        }
+
+        /* Mostrar todo el contenido, sin recortes */
+        .overflow-hidden,
+        .overflow-x-auto,
+        .overflow-y-auto {
+            overflow: visible !important;
+        }
+
+        /* Ocultar elementos no deseados */
+        aside,
+        header,
+        button,
+        .no-print {
+            display: none !important;
+        }
+
+        /* Expandir el contenido al ancho completo */
+        main {
+            width: 100% !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        /* Asegurar que los gráficos de Chart.js sí se impriman */
+        canvas {
+            max-width: 100% !important;
+            max-height: 100% !important;
+            page-break-inside: avoid !important;
+        }
+
+        /* Evitar cortes en tarjetas y gráficos */
+        .stat-card,
+        .chart-container,
+        .report-section {
+            break-inside: avoid !important;
+            page-break-inside: avoid !important;
+        }
+
+        /* Poner todo en formato vertical (sin flex) */
+        .flex {
+            display: block !important;
+        }
+        /* Forzar que Diagnóstico Visual empiece en otra página */
+        .page-break-print {
+            page-break-before: always !important;
+            break-before: always !important;
+            display: block !important;
+        }
+
+        
+    }
